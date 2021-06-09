@@ -12,10 +12,6 @@ function App() {
   const [data, setData] = useState()
   let fileExtentionCheck=true;
 
-  function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
- }
-
   const getExention = (files) => {
 
     Object.entries(files).forEach(
@@ -45,7 +41,7 @@ function App() {
     data.forEach(row => {
       let rowData = {}
       row.forEach((element, index) => {
-        rowData[headers[index]] = element!==""?element:"null"
+        rowData[headers[index]] = element!==""?element:"-"
       })
       rows.push(rowData)
 
@@ -57,7 +53,7 @@ function App() {
     const reader = new FileReader()
     reader.readAsBinaryString(value);
     reader.onload = (event) => {
-      console.log(column.yv208Column);
+      
       //parse data
       const bstr = event.target.result
       const workBook = XLSX.read(bstr, { type: "binary" })
@@ -70,12 +66,6 @@ function App() {
       const headers = fileData[0]
       const heads = headers.map(head => ({ title: head.replaceAll(".", "")  , field: head.replaceAll(".", "") }))
       const headCompare=headers.map(head => head.replaceAll(".", ""));
-      console.log("headCompare",headCompare);
-      let headCompareBool=true;
-      column.yv208Column.map(col=>{
-        headCompareBool=headCompareBool && headCompare.includes(col);
-        // console.log("heads.includes(column.yv208Column)",headCompare.includes(col))
-      });
       setColDefs(heads)
 
       //removing header
@@ -84,9 +74,13 @@ function App() {
       jsonData=convertToJson(headers, fileData)
       setData(jsonData)
       console.log("data",jsonData);
-      if(headCompareBool)  handleAdd('yv208');
-      else console.log("not yv208");
-      // handleAdd();
+      // column.Columns.forEach((currentValue, index)=>{
+      //   let headCompareBool=true;
+      //   currentValue.map(col=>{
+      //     headCompareBool=headCompareBool && headCompare.includes(col);
+      //   });
+      //   if (headCompareBool)handleAdd(column.tableName[index]);
+      // })
     }
   }
 
@@ -99,7 +93,6 @@ function App() {
         alert("all files ok");
         Object.entries(files).forEach(
           ([key, value]) => {
-          sleep(5000);
             fileRead(value);
           }
       );

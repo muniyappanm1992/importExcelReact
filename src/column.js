@@ -6,3 +6,6 @@ export const rolistColumn=['Ship2Party', 'Name', 'SOff', 'Rg']
 export const yv26Column=['Rec Code', 'Receiver', 'Document', 'DispMatDoc', 'DispItem', 'DispStLoc', 'RecvMatDoc', 'RecvItem', 'RecvStLoc', 'PGI Date', 'Batch', 'MatCode', 'MoT', 'InvoiceNo', 'AssignNo', 'Volume(KL)', 'Volume(K15)', 'Volume(K29)', 'Volume(TO)', 'Qty(EA)', 'State']
 export const yv208Column=['Exception', 'Material', 'Shipment', 'ShpStatus', 'Vehicle', 'Ship2Party', 'Name', 'Delivery', 'Quantity', 'Sales Unit', 'Delivery quantity', 'Seal No', 'Invoice']
 export const yv209dColumn=['Exception', 'DelCt', 'PRTY', 'Requested delivdate', 'Sales Document', 'Distribution Channel', 'Ship2Party', 'Name 1', 'RTD(in KM)', 'Material', 'OrderQty', 'Target quantity UoM', 'Truck no', 'Sales Group Desc', 'REMARKS', 'Sales Document Type', 'Sales Document Item', 'Created By', 'Sales Group']
+
+export const Columns=[godryColumn,outofstockColumn,romobileColumn,rolistColumn,yv26Column,yv208Column,yv209dColumn]
+export const tableName=['godry','outofstock','romobile','rolist','yv26','yv208','yv209d']
